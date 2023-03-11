@@ -216,3 +216,180 @@
 // f(g()())
 // // O que acontece?
 // f(1)
+
+
+
+
+// ------------------------------------------------------------------------------
+// Aula 3
+
+
+// function f(){
+//     let nome = 'João';
+//     function g () {
+//         console.log(nome);
+//     }
+//     g()
+// }
+// f()
+
+
+// function ola() {
+//     let nome = 'João';
+//     return function () {
+//         console.log('Olá, João');
+//     }
+// }
+
+// let olaResult = ola();
+// /*perceba que aqui a função ola já terminou.
+// É de se esperar que a variável nome já não
+// possa ser acessada.*/
+// olaResult();
+
+// function saudacoesFactory(saudacao, nome){
+//     return function(){
+//         console.log(saudacao + ', ' + nome)
+//     }
+// }
+
+// let olaJoao = saudacoesFactory('Ola', 'João');
+// let tchauJoao = saudacoesFactory('Tchau', 'João');
+// olaJoao();
+// tchauJoao();
+
+
+// function eAgora() {
+//     let cont = 1;
+//     function f1() {
+//         console.log(cont);
+//     }
+//     cont++;
+//     function f2() {
+//         console.log(cont);
+//     }
+//     //JSON contendo as duas funções
+//     return { f1, f2 }
+// }
+
+// let eAgoraResult = eAgora();
+// eAgoraResult.f1(); // O resultado será 2, pois o eAgora não executa a função f1, ela é apenas declarada, portanto o cont é criado e acrescentado, sem que f1 e f2 rodem.
+// eAgoraResult.f2();
+
+
+// let pessoa = {
+//     nome: "João",
+//     idade: 17,
+// }
+// //o acesso a propriedades pode ser feito com ponto
+// console.log("Me chamo " + pessoa.nome);
+// //e com [] também
+// console.log("Tenho " + pessoa["idade"] + " anos");
+
+// let pessoaComEndereco = {
+//     nome: "Maria",
+//     idade: 21,
+//     endereco: {
+//         logradouro: "Rua B",
+//         numero: 121,
+//     },
+// };
+// console.log(
+//     `Sou ${pessoaComEndereco.nome},
+//  tenho ${pessoaComEndereco.idade} anos
+//  e moro na rua ${pessoaComEndereco.endereco["logradouro"]}
+//  número ${pessoaComEndereco["endereco"]["numero"]}`
+// );
+
+// let concessionaria = {
+//     cnpj: "00011122210001-45",
+//     endereco: {
+//         logradouro: "Rua A",
+//         numero: 10,
+//         bairro: "Vila J",
+//     },
+//     veiculos: [
+//         {
+//             marca: "Ford",
+//             modelo: "Ecosport",
+//             anoDeFabricacao: 2018,
+//         },
+//         {
+//             marca: "Chevrolet",
+//             modelo: "Onix",
+//             anoDeFabricacao: 2020,
+//         },
+//         {
+//             marca: "Volkswagen",
+//             modelo: "Nivus",
+//             anoDeFabricacao: 2020,
+//         },
+//     ],
+// };
+
+// for (let veiculo of concessionaria.veiculos) {
+//     console.log(`Marca: ${veiculo.marca}`);
+//     console.log(`Modelo: ${veiculo.modelo}`);
+//     console.log(`Ano de Fabricação:
+//     ${veiculo.anoDeFabricacao}`);
+// }
+
+
+// let calculadora = {
+//     //pode ser arrow function
+//     soma: (a, b) => a + b,
+//     //e função comum também
+//     subtracao: function (a, b) {
+//         return a - b;
+//     },
+// };
+// console.log(`2 + 3 = ${calculadora.soma(2, 3)}`);
+// console.log(`2 - 3 = ${calculadora.subtracao(2, 3)}`);
+
+
+
+// FUNÇÕES SINCRONAS E ASSINCRONAS
+// function demorada() {
+//     const atualMais2Segundos = new Date().getTime() + 2000
+//     //não esqueça do ;, única instrução no corpo do while
+//     while (new Date().getTime() <= atualMais2Segundos);
+//     const d = 8 + 4
+//     return d
+// }
+// const a = 2 + 3
+// const b = 5 + 9
+// const d = demorada()
+// /*
+// o valor de e não depende do valor devolvido
+// pela função demorada.
+// */
+// const e = 2 + a + b
+// console.log(e)
+
+// function demorada() {
+//     const atualMais2Segundos = new Date().getTime() + 2000
+//     //não esqueça do ;, única instrução no corpo do while
+//     while (new Date().getTime() <= atualMais2Segundos);
+//     const d = 8 + 4
+//     return d
+// }
+// const a = 2 + 3
+// const b = 5 + 9
+// //função será executada depois de, pelo menos, 500 milissegundos
+// setTimeout(function () {
+//     const d = demorada()
+//     console.log(d)
+// }, 500)
+
+// //enquanto isso, essas linhas prosseguem executando
+// //sem ficar esperando
+// const e = 2 + a + b
+// console.log(e)
+
+
+setTimeout(function(){
+    console.log('dentro da timeout', 0)
+})
+const a = new Date().getTime() + 1000
+while (new Date().getTime() <= a);
+console.log('fora da timeout')

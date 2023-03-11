@@ -224,3 +224,104 @@ gResult()
 // E assim também
 g()() // O primeiro () executa uma função e o segundo () executa o retorno de g, que é outra função
 ```
+
+<br />
+<br />
+
+# Aula 3
+## Funções Aninhadas
+``` js
+function saudacoesFactory(saudacao, nome){
+    return function(){
+        console.log(saudacao + ', ' + nome)
+    }
+}
+
+let olaJoao = saudacoesFactory('Ola', 'João');
+let tchauJoao = saudacoesFactory('Tchau', 'João');
+olaJoao();
+tchauJoao();
+```
+> Ao executar a variável olaJoao, ele executa a função resultado de saudacoesFactory
+
+<br />
+<br />
+
+## Closure
+```js
+function eAgora() {
+    let cont = 1;
+    function f1() {
+        console.log(cont);
+    }
+    cont++;
+    function f2() {
+        console.log(cont);
+    }
+    //JSON contendo as duas funções
+    return { f1, f2 }
+}
+
+let eAgoraResult = eAgora();
+eAgoraResult.f1(); // O resultado será 2, pois o eAgora não executa a função f1, ela é apenas declarada, portanto o cont é criado e acrescentado, sem que f1 e f2 rodem.
+eAgoraResult.f2();
+```
+
+<br />
+<br />
+
+## JSON
+```js 
+let concessionaria = {
+    cnpj: "00011122210001-45",
+    endereco: {
+        logradouro: "Rua A",
+        numero: 10,
+        bairro: "Vila J",
+    },
+    veiculos: [
+        {
+            marca: "Ford",
+            modelo: "Ecosport",
+            anoDeFabricacao: 2018,
+        },
+        {
+            marca: "Chevrolet",
+            modelo: "Onix",
+            anoDeFabricacao: 2020,
+        },
+        {
+            marca: "Volkswagen",
+            modelo: "Nivus",
+            anoDeFabricacao: 2020,
+        },
+    ],
+};
+for (let veiculo of concessionaria.veiculos) {
+    console.log(`Marca: ${veiculo.marca}`);
+    console.log(`Modelo: ${veiculo.modelo}`);
+    console.log(`Ano de Fabricação:
+    ${veiculo.anoDeFabricacao}`);
+}
+```
+
+<br />
+<br />
+
+## Funções Síncronas e Assíncronas
+### Sincronas: Chama a funções e esperam a reposta
+### Assíncronas: Chama a função, que faz uma "promisse" que haverá uma resposta, e o programa verifica de tempos em tempos se há uma resposta 
+
+```js
+setTimeout(function(){
+    console.log('dentro da timeout', 0)
+})
+const a = new Date().getTime() + 1000
+while (new Date().getTime() <= a);
+console.log('fora da timeout')
+```
+que resulta em:
+```
+fora da timeout
+dentro da timeout 0
+```

@@ -325,3 +325,11 @@ que resulta em:
 fora da timeout
 dentro da timeout 0
 ```
+
+
+<br />
+<br />
+
+# Aula 4
+
+## Continuação Funções Síncronas e Assíncronas

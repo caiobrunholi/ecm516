@@ -387,9 +387,113 @@
 // console.log(e)
 
 
-setTimeout(function(){
-    console.log('dentro da timeout', 0)
-})
-const a = new Date().getTime() + 1000
-while (new Date().getTime() <= a);
-console.log('fora da timeout')
+// setTimeout(function(){
+//     console.log('dentro da timeout', 0)
+// })
+// const a = new Date().getTime() + 1000
+// while (new Date().getTime() <= a);
+// console.log('fora da timeout')
+
+
+
+
+// ------------------------------------------------------------------------------
+// Aula 3
+// function demorada(tempo) {
+//     console.log(`demorada ${tempo}`);
+//     const atualMaisTempo = new Date().getTime() + tempo;
+//     //não esqueça do ;, única instrução no corpo do while
+//     while (new Date().getTime() <= atualMaisTempo);
+//     const d = 8 + 4;
+//     return d;
+// }
+// setTimeout(function () { demorada(2000) }, 2000);
+// setTimeout(function () { demorada(1000) }, 1000);
+// console.log("chegou ao fim do script principal");
+
+
+// const fs = require("fs");
+// const abrirArquivo = function (nomeArquivo) {
+//     const exibirConteudo = function (erro, conteudo) {
+//         if (erro) {
+//             console.log(`Deu erro: ${erro}`);
+//         } else {
+//             console.log(conteudo.toString());
+//         }
+//     };
+//     fs.readFile(nomeArquivo, exibirConteudo);
+// };
+// //crie um arquivo chamado arquivo.txt com o conteúdo ''2'' (sem as aspas)
+// //no mesmo diretório em que se encontra seu script
+// abrirArquivo("arquivo.txt");
+
+
+// const fs = require("fs");
+// const abrirArquivo = function (nomeArquivo) {
+//     const exibirConteudo = function (erro, conteudo) {
+//         if (erro) {
+//             console.log(`Deu erro: ${erro}`);
+//         } else {
+//             console.log(conteudo.toString());
+//             const dobro = conteudo.toString() * 2;
+//             const finalizar = function (erro) {
+//                 if (erro) {
+//                     console.log('Deu erro tentando salvar o dobro')
+//                 }
+//                 else {
+//                     console.log("Salvou o dobro com sucesso");
+//                 }
+//             }
+//             fs.writeFile('dobro.txt', dobro.toString(), finalizar);
+//         }
+//     };
+
+//     fs.readFile(nomeArquivo, exibirConteudo);
+// };
+// abrirArquivo("arquivo.txt");
+
+
+// function calculoDemorado(numero) {
+//     return new Promise(function (resolve, reject) {
+//         let res = 0
+//         for (let i = 1; i <= numero; i++) {
+//             res += i;
+//         }
+//         resolve(res)
+//     })
+// }
+// calculoDemorado(10).then((resultado) => {
+//     console.log(resultado)
+// })
+
+
+// function calculaRapidinho (numero){
+//     return Promise.resolve((numero * (numero+1))/2)
+// }
+// calculaRapidinho(10).
+//     then(resultado => {
+//         console.log(resultado)
+//     })
+// console.log('Esperando...')
+
+function calculoRapidinho(numero) {
+    return numero >= 0
+        ? Promise.resolve((numero * (numero + 1)) / 2)
+        : Promise.reject("Somente valores positivos, por favor");
+}
+
+calculoRapidinho(10)
+    .then((resultado) => {
+        console.log(resultado);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+calculoRapidinho(-1)
+    .then((resultado) => {
+        console.log(resultado);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+console.log("esperando...");

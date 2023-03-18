@@ -333,3 +333,43 @@ dentro da timeout 0
 # Aula 4
 
 ## Continuação Funções Síncronas e Assíncronas
+`require()` é o mesmo que `import` ou `include`
+```js
+const fs = require("fs")
+```
+
+<br />
+<br />
+
+## Callbacks e Promises 
+```js
+function calculoDemorado(numero) {
+    return new Promise(function (resolve, reject) {
+        let res = 0
+        for (let i = 1; i <= numero; i++) {
+            res += i;
+        }
+        resolve(res)
+    })
+}
+calculoDemorado(10).then((resultado) => {
+    console.log(resultado)
+})
+```
+
+```js
+function calculaRapidinho (numero){
+    return Promise.resolve((numero * (numero+1))/2)
+}
+calculaRapidinho(10).
+    then(resultado => {
+        console.log(resultado)
+    })
+console.log('Esperando...')
+```
+> Mesmo sendo rápido ele executa o log antes
+```
+Esperando...
+55
+```
+

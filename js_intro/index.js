@@ -519,34 +519,42 @@ const cnt = '10'
 
 const url = `https://api.openweathermap.org/data/2.5/forecast?q=${q}&units=${units}&appid=${appid}&lang=${lang}&cnt=${cnt}`;
 
+//faz a requisição
 axios
     .get(url)
     .then((res) => {
-        console.log(res)
-        return res.data
+        //mostra o resultado e devolve somente a parte de interesse
+        console.log(res);
+        return res.data;
     })
     .then((res) => {
-        // mostra o total e devolve o resultado
-        console.log(res.cnt)
-        return res
+        //mostra o total e devolve o resultado
+        console.log(res.cnt);
+        return res;
     })
-    .then((res) =>{
-        // devolve somente a lista de previsões
-        console.log('aqui', res)
-        return res['list'];
+    .then((res) => {
+        //devolve somente a lista de previsões
+        console.log("aqui", res);
+        return res["list"];
     })
-    .then((res) =>{
-        // para cada resultado mostra algumas informações
-        for (let previsao of res){
+    .then((res) => {
+        //para cada resultado, mostra algumas informações
+        for (let previsao of res) {
             console.log(`
-                ${new Date(previsao.dt * 1000).toLocaleString()},
-                ${'Min: '+previsao.main.temp_min}\u00B0C,
-                ${'Max: '+previsao.main.temp_max}\u00B0C,
-                ${'Umi: '+previsao.main.humidity}%.
-                ${previsao.wheather[0].description}
-            `)
+                ${new Date(+previsao.dt * 1000).toLocaleString()},
+                ${'Min: ' + previsao.main.temp_min}\u00B0C,
+                ${'Max: ' + previsao.main.temp_max}\u00B0C,
+                ${'Hum: ' + previsao.main.humidity}%,
+                ${previsao.weather[0].description}
+            `);
         }
+        return res;
     })
-    .catch((err) => {
-        console.log(err)
-    })
+    .then((res) => {
+        //verifica quantas previsões têm percepção humana tempertura acima de 30 graus
+        const lista = res.filter(r => r.main.feels_like >= 30);
+        console.log(`${lista.length} previsões têm percepção humana de temperatura acima de 30 graus`)  
+     })
+    .catch ((err) => {
+    console.log(err)
+})

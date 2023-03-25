@@ -523,6 +523,12 @@ axios
     .get(url)
     .then((res) => {
         console.log(res)
+        return res.data
+    })
+    .then((res) => {
+        // mostra o total e devolve o resultado
+        console.log(res.cnt)
+        return res
     })
     .catch((err) => {
         console.log(err)

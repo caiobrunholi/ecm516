@@ -543,7 +543,7 @@ axios
                 ${'Min: '+previsao.main.temp_min}\u00B0C,
                 ${'Max: '+previsao.main.temp_max}\u00B0C,
                 ${'Umi: '+previsao.main.humidity}%.
-                ${previsao.weather[0].description}
+                ${previsao.wheather[0].description}
             `)
         }
     })

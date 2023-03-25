@@ -398,7 +398,7 @@
 
 
 // ------------------------------------------------------------------------------
-// Aula 3
+// Aula 4
 // function demorada(tempo) {
 //     console.log(`demorada ${tempo}`);
 //     const atualMaisTempo = new Date().getTime() + tempo;
@@ -476,24 +476,54 @@
 //     })
 // console.log('Esperando...')
 
-function calculoRapidinho(numero) {
-    return numero >= 0
-        ? Promise.resolve((numero * (numero + 1)) / 2)
-        : Promise.reject("Somente valores positivos, por favor");
-}
+// function calculoRapidinho(numero) {
+//     return numero >= 0
+//         ? Promise.resolve((numero * (numero + 1)) / 2)
+//         : Promise.reject("Somente valores positivos, por favor");
+// }
 
-calculoRapidinho(10)
-    .then((resultado) => {
-        console.log(resultado);
+// calculoRapidinho(10)
+//     .then((resultado) => {
+//         console.log(resultado);
+//     })
+//     .catch((err) => {
+//         console.log(err);
+//     });
+// calculoRapidinho(-1)
+//     .then((resultado) => {
+//         console.log(resultado);
+//     })
+//     .catch((err) => {
+//         console.log(err);
+//     });
+// console.log("esperando...");
+
+
+
+
+
+
+
+// ------------------------------------------------------------------------------
+// Aula 5
+// API KEY OPENWEATHERMAP: 187e76d9b6c8bdafe9bf023428fed59e
+
+const axios = require('axios')
+
+const appid = '187e76d9b6c8bdafe9bf023428fed59e';
+const q = 'Itu'
+const units = 'metric'
+const lang = 'pt_BR'
+// quantidade de resultados
+const cnt = '10'
+
+const url = `https://api.openweathermap.org/data/2.5/forecast?q=${q}&units=${units}&appid=${appid}&lang=${lang}&cnt=${cnt}`;
+
+axios
+    .get(url)
+    .then((res) => {
+        console.log(res)
     })
     .catch((err) => {
-        console.log(err);
-    });
-calculoRapidinho(-1)
-    .then((resultado) => {
-        console.log(resultado);
+        console.log(err)
     })
-    .catch((err) => {
-        console.log(err);
-    });
-console.log("esperando...");

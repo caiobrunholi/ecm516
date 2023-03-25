@@ -530,6 +530,19 @@ axios
         console.log(res.cnt)
         return res
     })
+    .then((res) =>{
+        // devolve somente a lista de previsões
+        console.log('aqui', res)
+        return res['list'];
+    })
+    .then((res) =>{
+        // para cada resultado mostra algumas informações
+        for (let previsao of res){
+            console.log(`
+                ${new Date(previsao.dt * 1000)}
+            `)
+        }
+    })
     .catch((err) => {
         console.log(err)
     })

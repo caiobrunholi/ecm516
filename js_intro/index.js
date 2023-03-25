@@ -539,7 +539,11 @@ axios
         // para cada resultado mostra algumas informações
         for (let previsao of res){
             console.log(`
-                ${new Date(previsao.dt * 1000)}
+                ${new Date(previsao.dt * 1000).toLocaleString()},
+                ${'Min: '+previsao.main.temp_min}\u00B0C,
+                ${'Max: '+previsao.main.temp_max}\u00B0C,
+                ${'Umi: '+previsao.main.humidity}%.
+                ${previsao.weather[0].description}
             `)
         }
     })

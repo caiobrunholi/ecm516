@@ -373,3 +373,28 @@ Esperando...
 55
 ```
 
+
+
+<br />
+<br />
+
+# Aula 6
+## Intrução de protocolo HTTP
+#### Página do Google é uma página estática
+#### Resultado de pesquisa no Google é página dinâmica
+
+> É cliente -> servidor,  as ações sempre se originam do cliente 
+>> request -- response
+
+<br />
+
+#### HTTP é stateless
+<br />
+<br />
+
+## CRUD - SQL - HTTP
+#### (C)reate - INSTERT - POST
+#### (R)etrieve - SELECT - GET
+#### (U)pdate - UPDATE - POST
+#### (D)elete - DELeTE - DELETE
+

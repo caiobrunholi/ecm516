@@ -571,32 +571,38 @@
 // boasVindas.then((res) => console.log(res))
 
 
-function fatorial(n) {
-    if (n < 0) return Promise.reject("Valor não pode ser negativo");
-    let res = 1;
-    for (let i = 2; i <= n; i++) res *= i;
-    return Promise.resolve(res);
-}
+// function fatorial(n) {
+//     if (n < 0) return Promise.reject("Valor não pode ser negativo");
+//     let res = 1;
+//     for (let i = 2; i <= n; i++) res *= i;
+//     return Promise.resolve(res);
+// }
 
-function chamadaComThenCatch() {
-    fatorial(5)
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
-    fatorial(-1)
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
-}
-chamadaComThenCatch();
+// function chamadaComThenCatch() {
+//     fatorial(5)
+//         .then((res) => console.log(res))
+//         .catch((err) => console.log(err));
+//     fatorial(-1)
+//         .then((res) => console.log(res))
+//         .catch((err) => console.log(err));
+// }
+// chamadaComThenCatch();
 
-async function chamadaComAwait(){
-    const f1 = await fatorial(5)
-    console.log(f1)
-    try{
-        const f2 = await fatorial(-1)
-        console.log(f2)
-    } catch (err) {
-        console.log(err)
-    }
-}
+// async function chamadaComAwait(){
+//     const f1 = await fatorial(5)
+//     console.log(f1)
+//     try{
+//         const f2 = await fatorial(-1)
+//         console.log(f2)
+//     } catch (err) {
+//         console.log(err)
+//     }
+// }
 
-chamadaComAwait()
+// chamadaComAwait()
+
+
+
+
+// ------------------------------------------------------------------------------
+// Aula 6

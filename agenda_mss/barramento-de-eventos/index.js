@@ -8,10 +8,13 @@ app.use(express.json())
 app.post('/eventos', (req, res) => {
     const evento = req.body
     console.log(evento)
-    // eviarevento para o microservico de lembretes
+    // eviar evento para o microservico de lembretes
     axios.post('http://localhost:4000/eventos', evento)
-    // eviarevento para o microservico de observacoes
+    // eviar evento para o microservico de observacoes
     axios.post('http://localhost:5000/eventos', evento)
+    // eviar evento para o microservico de consulta
+    axios.post('http://localhost:6000/eventos', evento)
+
     res.status(200).send({msg:'ok'})
 })
 

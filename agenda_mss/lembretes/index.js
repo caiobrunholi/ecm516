@@ -29,7 +29,7 @@ app.post("/lembretes", async (req, res) => {
 
 app.post('/eventos', (req,res) => {
     const evento = req.body
-    console.log(req.body)
+    // console.log(req.body)
     res.status(200).send({msg: 'ok'}) 
 })
 

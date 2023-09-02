@@ -12,13 +12,13 @@ app.post('/eventos', (req, res) => {
     eventos.push(evento)
     console.log(evento)
     // eviar evento para o microservico de lembretes
-    axios.post('http://localhost:4000/eventos', evento).catch(err => console.log('Microserviço de lembretes fora do ar'))
+    axios.post('http://10.2.130.189:4000/eventos', evento).catch(err => console.log('Microserviço de lembretes fora do ar'))
     // eviar evento para o microservico de observacoes
-    axios.post('http://localhost:5000/eventos', evento).catch(err => console.log('Microserviço de observacoes fora do ar'))
+    axios.post('http://10.2.130.189:5000/eventos', evento).catch(err => console.log('Microserviço de observacoes fora do ar'))
     // eviar evento para o microservico de consulta
-    axios.post('http://localhost:6000/eventos', evento).catch(err => console.log('Microserviço de consulta fora do ar'))
+    axios.post('http://10.2.130.189:6000/eventos', evento).catch(err => console.log('Microserviço de consulta fora do ar'))
     // eviar evento para o microservico de classificacao
-    axios.post('http://localhost:7000/eventos', evento).catch(err => console.log('Microserviço de classificacao fora do ar'))
+    axios.post('http://10.2.130.189:7000/eventos', evento).catch(err => console.log('Microserviço de classificacao fora do ar'))
 
     res.status(200).send({msg:'ok'})
 })
